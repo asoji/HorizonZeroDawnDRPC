@@ -3,7 +3,9 @@
 namespace HorizonZeroDawnDRPC {
     class Program {
         static void Main(string[] args) {
-            Console.WriteLine("Hello World!");
+            DiscordRichPresence.Setup();
+            HorizonZeroDawnProcessCheck.ProcessCheck();
+            Console.ReadKey(true);
         }
     }
 }
