@@ -7,7 +7,6 @@ namespace HorizonZeroDawnDRPC {
         public static Config cfg = new Config();
 
         static void SetConfig() {
-            // cfg.LogPath = "";
             cfg.Date = true;
             cfg.Console = true;
             cfg.ClearOnStart = true;
