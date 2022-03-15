@@ -9,7 +9,7 @@ namespace HorizonZeroDawnDRPC {
         public static void Setup() {
             DiscordRpc = new DiscordRPC("952776705288835102");
 
-            DiscordRpc.Logger = new ConsoleLogger();
+            // DiscordRpc.Logger = new ConsoleLogger(); // uncomment if you want to see DRPC output too
 
             DiscordRpc.Initialize();
             
