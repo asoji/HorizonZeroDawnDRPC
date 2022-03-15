@@ -10,14 +10,33 @@ namespace HorizonZeroDawnDRPC {
         public static void ProcessCheck() {
             for (int i = 0;; i--) {
                 Process[] processes = Process.GetProcessesByName("HorizonZeroDawn");
-                if (processes.Length > 0) {
-                    DiscordRichPresence.DiscordRpc.UpdateDetails("Aloy is exploring!");
-                    DiscordRichPresence.DiscordRpc.Logger.Info("Horizon Zero Dawn is Running!");
-                    Thread.Sleep(1000);
-                } else {
-                    DiscordRichPresence.DiscordRpc.UpdateDetails("Game is not running!");
-                    DiscordRichPresence.DiscordRpc.Logger.Warning("Horizon Zero Dawn is Not Running!");
-                    Thread.Sleep(1000);
+                // if (processes.Length > 0) {
+                //     DiscordRichPresence.DiscordRpc.UpdateDetails("Aloy is exploring!");
+                //     DiscordRichPresence.DiscordRpc.Logger.Info("Horizon Zero Dawn is Running!");
+                //     Thread.Sleep(1000);
+                // } else {
+                //     DiscordRichPresence.DiscordRpc.UpdateDetails("Game is not running!");
+                //     DiscordRichPresence.DiscordRpc.Logger.Warning("Horizon Zero Dawn is Not Running!");
+                //     Thread.Sleep(1000);
+                // }
+
+                switch (processes.Length) {
+                    case 0: // Game is off
+                        DiscordRichPresence.DiscordRpc.UpdateDetails("Game is not running!");
+                        DiscordRichPresence.DiscordRpc.Logger.Warning("Horizon Zero Dawn is Not Running!");
+                        Program.log.Warning("Horizon Zero Dawn is Not Running!");
+                        Thread.Sleep(1000);
+                        break;
+                    case 1: // Game is on
+                        DiscordRichPresence.DiscordRpc.UpdateDetails("Aloy is exploring!");
+                        DiscordRichPresence.DiscordRpc.Logger.Info("Horizon Zero Dawn is Running!");
+                        Program.log.Info("Horizon Zero Dawn is Running!");
+                        Thread.Sleep(1000);
+                        break;
+                    default: // HOW. WHAT.
+                        Console.Write("What the fuck did you do?");
+                        System.Environment.Exit(0);
+                        break;
                 }
             }
         }
